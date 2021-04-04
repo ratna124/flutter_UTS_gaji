@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'model/kategori.dart';
 
-class EntryForm extends StatefulWidget {
+class EntryFormKategori extends StatefulWidget {
   final Kategori kategori;
-  EntryForm(this.kategori);
+  EntryFormKategori(this.kategori);
   @override
-  EntryFormState createState() => EntryFormState(this.kategori);
+  EntryFormKategoriState createState() => EntryFormKategoriState(this.kategori);
 }
 
 //class controller
-class EntryFormState extends State<EntryForm> {
+class EntryFormKategoriState extends State<EntryFormKategori> {
   Kategori kategori;
-  EntryFormState(this.kategori);
+  EntryFormKategoriState(this.kategori);
   TextEditingController golonganController = TextEditingController();
   TextEditingController gajiController = TextEditingController();
   @override
