@@ -1,46 +1,44 @@
 import 'package:flutter/material.dart';
-import 'model/item.dart';
+import 'model/kategori.dart';
 
 class EntryForm extends StatefulWidget {
-  final Item item;
-  EntryForm(this.item);
+  final Kategori kategori;
+  EntryForm(this.kategori);
   @override
-  EntryFormState createState() => EntryFormState(this.item);
+  EntryFormState createState() => EntryFormState(this.kategori);
 }
 
 //class controller
 class EntryFormState extends State<EntryForm> {
-  Item item;
-  EntryFormState(this.item);
-  TextEditingController nameController = TextEditingController();
-  TextEditingController alamatController = TextEditingController();
-  TextEditingController nomorhpController = TextEditingController();
+  Kategori kategori;
+  EntryFormState(this.kategori);
+  TextEditingController golonganController = TextEditingController();
+  TextEditingController gajiController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     //kondisi
-    if (item != null) {
-      nameController.text = item.name;
-      alamatController.text = item.alamat;
-      nomorhpController.text = item.nomorhp.toString();
+    if (kategori != null) {
+      golonganController.text = kategori.golongan;
+      gajiController.text = kategori.gaji.toString();
     }
     //rubah
     return Scaffold(
         appBar: AppBar(
-          title: item == null ? Text('Tambah') : Text('Ubah'),
+          title: kategori == null ? Text('Tambah') : Text('Ubah'),
           leading: Icon(Icons.keyboard_arrow_left),
         ),
         body: Padding(
           padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
           child: ListView(
             children: <Widget>[
-              // nama
+              // Golongan
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: nameController,
+                  controller: golonganController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Nama',
+                    labelText: 'Golongan',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -50,14 +48,14 @@ class EntryFormState extends State<EntryForm> {
                   },
                 ),
               ),
-              // Alamat
+              // Gaji
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: alamatController,
-                  keyboardType: TextInputType.text,
+                  controller: gajiController,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    labelText: 'Alamat',
+                    labelText: 'Gaji',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -68,23 +66,6 @@ class EntryFormState extends State<EntryForm> {
                 ),
               ),
 
-              // Nomor HP
-              Padding(
-                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                child: TextField(
-                  controller: nomorhpController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Nomor HP',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    //
-                  },
-                ),
-              ),
               
               // tombol button
               Padding(
@@ -101,21 +82,19 @@ class EntryFormState extends State<EntryForm> {
                           textScaleFactor: 1.5,
                         ),
                         onPressed: () {
-                          if (item == null) {
+                          if (kategori == null) {
                             // tambah data
-                            item = Item(
-                              nameController.text,
-                              alamatController.text,
-                              int.parse(nomorhpController.text),
+                            kategori = Kategori(
+                              golonganController.text,
+                              int.parse(gajiController.text),
                             );
                           } else {
                             // ubah data
-                            item.name = nameController.text;
-                            item.alamat = alamatController.text;
-                            item.nomorhp = int.parse(nomorhpController.text);
+                            kategori.golongan = golonganController.text;
+                            kategori.gaji = int.parse(gajiController.text);
                           }
                           // kembali ke layar sebelumnya dengan membawa objek item
-                          Navigator.pop(context, item);
+                          Navigator.pop(context, kategori);
                         },
                       ),
                     ),
