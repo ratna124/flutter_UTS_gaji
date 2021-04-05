@@ -79,14 +79,14 @@ class DbHelper {
   }
 
   //create databases
-  Future<int> insertK(Item object) async {
+  Future<int> insertK(Kategori object) async {
     Database db = await this.initDb();
     int count = await db.insert('kategori', object.toMap());
     return count;
   }
 
   //update databases
-  Future<int> updateK(Item object) async {
+  Future<int> updateK(Kategori object) async {
     Database db = await this.initDb();
     int count = await db
         .update('kategori', object.toMap(), where: 'id=?', whereArgs: [object.id]);
