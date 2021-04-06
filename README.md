@@ -1,4 +1,22 @@
 # gaji_karyawan
+Hasil
+Karyawan :
+![plot](./Hasil/a.jpg)
+![plot](./Hasil/b.jpg)
+![plot](./Hasil/c.jpg)
+![plot](./Hasil/d.jpg)
+![plot](./Hasil/e.jpg)
+![plot](./Hasil/f.jpg)
+![plot](./Hasil/g.jpg)
+
+Kategori
+![plot](./Hasil/h.jpg)
+![plot](./Hasil/i.jpg)
+![plot](./Hasil/j.jpg)
+![plot](./Hasil/k.jpg)
+![plot](./Hasil/l.jpg)
+![plot](./Hasil/m.jpg)
+![plot](./Hasil/n.jpg)
 
 A new Flutter project.
 

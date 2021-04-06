@@ -24,7 +24,7 @@ class EntryFormKategoriState extends State<EntryFormKategori> {
     //rubah
     return Scaffold(
         appBar: AppBar(
-          title: kategori == null ? Text('Tambah') : Text('Ubah'),
+          title: kategori == null ? Text('Tambah Kategori') : Text('Ubah'),
           leading: Icon(Icons.keyboard_arrow_left),
         ),
         body: Padding(
@@ -96,6 +96,9 @@ class EntryFormKategoriState extends State<EntryFormKategori> {
                           // kembali ke layar sebelumnya dengan membawa objek item
                           Navigator.pop(context, kategori);
                         },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)
+                          ),
                       ),
                     ),
                     Container(

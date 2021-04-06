@@ -14,15 +14,15 @@ class HomeKategori extends StatefulWidget {
 class HomeKategoriState extends State<HomeKategori> {
   DbHelper dbHelper = DbHelper();
   int count = 0;
-  List<Kategori> kategoriList;
+  List<Kategori> itemList;
   @override
   Widget build(BuildContext context) {
-    if (kategoriList == null) {
-      kategoriList = List<Kategori>();
+    if (itemList == null) {
+      itemList = List<Kategori>();
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daftar Item'),
+        title: Text('Daftar Kategori'),
       ),
       body: Column(children: [
         Expanded(
@@ -33,7 +33,7 @@ class HomeKategoriState extends State<HomeKategori> {
           child: SizedBox(
             width: double.infinity,
             child: RaisedButton(
-              child: Text("Tambah Item"),
+              child: Text("Tambah Kategori"),
               onPressed: () async {
                 var kategori = await navigateToEntryForm(context, null);
                 if (kategori != null) {
@@ -74,15 +74,15 @@ class HomeKategoriState extends State<HomeKategori> {
               child: Icon(Icons.ad_units),
             ),
             title: Text(
-              this.kategoriList[index].golongan,
+              this.itemList[index].golongan,
               style: textStyle,
             ),
-            subtitle: Text(this.kategoriList[index].gaji.toString()),
+            subtitle: Text(this.itemList[index].gaji.toString()),
             trailing: GestureDetector(
               child: Icon(Icons.delete),
               onTap: () async {
                 //TODO 3 Panggil Fungsi untuk Delete dari DB berdasarkan Kategori
-                int result = await dbHelper.delete(this.kategoriList[index].id);
+                int result = await dbHelper.deleteK(this.itemList[index].id);
                 if (result > 0) {
                   updateListView();
                 }
@@ -90,7 +90,7 @@ class HomeKategoriState extends State<HomeKategori> {
             ),
             onTap: () async {
               var kategori =
-                  await navigateToEntryForm(context, this.kategoriList[index]);
+                  await navigateToEntryForm(context, this.itemList[index]);
               //TODO 4 Panggil Fungsi untuk Edit data
               int result = await dbHelper.updateK(kategori);
               if (result > 0) {
@@ -111,7 +111,7 @@ class HomeKategoriState extends State<HomeKategori> {
       Future<List<Kategori>> itemListFuture = dbHelper.getItemListK();
       itemListFuture.then((itemList) {
         setState(() {
-          this.kategoriList = itemList;
+          this.itemList = itemList;
           this.count = itemList.length;
         });
       });

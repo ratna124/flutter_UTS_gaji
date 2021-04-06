@@ -101,7 +101,7 @@ class DbHelper {
   }
 
   Future<List<Kategori>> getItemListK() async {
-    var itemMapList = await select();
+    var itemMapList = await selectK();
     int count = itemMapList.length;
     List<Kategori> itemList = List<Kategori>();
     for (int i = 0; i < count; i++) {

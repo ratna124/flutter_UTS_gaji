@@ -26,7 +26,7 @@ class EntryFormState extends State<EntryForm> {
     //rubah
     return Scaffold(
         appBar: AppBar(
-          title: item == null ? Text('Tambah') : Text('Ubah'),
+          title: item == null ? Text('Tambah Karyawan') : Text('Ubah'),
           leading: Icon(Icons.keyboard_arrow_left),
         ),
         body: Padding(
@@ -117,6 +117,9 @@ class EntryFormState extends State<EntryForm> {
                           // kembali ke layar sebelumnya dengan membawa objek item
                           Navigator.pop(context, item);
                         },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)
+                          ),
                       ),
                     ),
                     Container(

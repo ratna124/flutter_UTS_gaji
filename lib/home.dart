@@ -22,7 +22,7 @@ class HomeState extends State<Home> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daftar Item'),
+        title: Text('Daftar Karyawan'),
       ),
       body: Column(children: [
         Expanded(
@@ -33,7 +33,7 @@ class HomeState extends State<Home> {
           child: SizedBox(
             width: double.infinity,
             child: RaisedButton(
-              child: Text("Tambah Item"),
+              child: Text("Tambah Karyawan"),
               onPressed: () async {
                 var item = await navigateToEntryForm(context, null);
                 if (item != null) {
@@ -76,7 +76,13 @@ class HomeState extends State<Home> {
               this.itemList[index].name,
               style: textStyle,
             ),
-            subtitle: Text(this.itemList[index].nomorhp.toString()),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(this.itemList[index].alamat),
+                Text(this.itemList[index].nomorhp.toString()),
+              ],
+            ),
             trailing: GestureDetector(
               child: Icon(Icons.delete),
               onTap: () async {
